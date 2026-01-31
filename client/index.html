@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Agar Clone Multi-Cell</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Экран входа -->
+    <div id="login">
+        <div class="box">
+            <h2>🔵 Agar Clone</h2>
+            <input id="name" type="text" placeholder="Никнейм" maxlength="15" autofocus>
+            
+            <div class="color-picker">
+                <label>Выбери цвет:</label>
+                <div class="colors" id="colors">
+                    <div class="color-option" data-color="hsl(0, 70%, 50%)" style="background: hsl(0, 70%, 50%)"></div>
+                    <div class="color-option" data-color="hsl(30, 70%, 50%)" style="background: hsl(30, 70%, 50%)"></div>
+                    <div class="color-option" data-color="hsl(60, 70%, 50%)" style="background: hsl(60, 70%, 50%)"></div>
+                    <div class="color-option" data-color="hsl(120, 70%, 50%)" style="background: hsl(120, 70%, 50%)"></div>
+                    <div class="color-option" data-color="hsl(180, 70%, 50%)" style="background: hsl(180, 70%, 50%)"></div>
+                    <div class="color-option" data-color="hsl(210, 70%, 50%)" style="background: hsl(210, 70%, 50%)"></div>
+                    <div class="color-option" data-color="hsl(270, 70%, 50%)" style="background: hsl(270, 70%, 50%)"></div>
+                    <div class="color-option" data-color="hsl(300, 70%, 50%)" style="background: hsl(300, 70%, 50%)"></div>
+                    <div class="color-option selected" data-color="random" style="background: linear-gradient(45deg, red, orange, yellow, green, blue, purple)"></div>
+                </div>
+            </div>
+            
+            <button id="play">Играть</button>
+            <div class="controls-info">
+                <p><strong>Управление:</strong></p>
+                <p>🖱️ Мышь - Движение</p>
+                <p>⎵ Пробел - Сплит / Слияние</p>
+                <p>W - Выброс массы / Снаряд</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Экран смерти -->
+    <div id="death-screen" style="display:none">
+        <div class="death-box">
+            <h2>💀 Вас съели!</h2>
+            <div class="death-stats">
+                <p>Никнейм: <span id="death-name"></span></p>
+                <p>Убийств: <span id="death-kills">0</span></p>
+            </div>
+            <button id="respawn-btn">Респавн</button>
+        </div>
+    </div>
+    
+    <!-- Игровой UI -->
+    <div id="ui" style="display:none">
+        <div id="score-panel">
+            <span>Масса: <span id="score">0</span></span>
+        </div>
+        <div id="buffs-panel"></div>
+    </div>
+    
+    <!-- Таймер спавна баффов -->
+    <div id="buff-timer" style="display:none">
+        <span>Следующие баффы через: </span>
+        <span id="buff-timer-value">60</span><span>с</span>
+    </div>
+    
+    <!-- Лидерборд -->
+    <div id="leaderboard" style="display:none">
+        <h3>🏆 Лидеры</h3>
+        <ol id="leaders"></ol>
+    </div>
+    
+    <canvas id="canvas"></canvas>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
